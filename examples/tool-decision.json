@@ -1,0 +1,7 @@
+{
+  "tool": "workspace.write",
+  "risk": "High",
+  "authenticated": true,
+  "explicitUserConsent": false,
+  "expectedDecision": "Ask"
+}

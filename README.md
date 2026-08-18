@@ -1,72 +1,94 @@
-# Diwy
+# Diwy — AI Orchestration Platform
 
-### Orquestación de IA, herramientas y agentes sobre un núcleo .NET
+### A public engineering case study for a private, production-oriented .NET product
 
-[![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet)](https://dotnet.microsoft.com/) [![React 19](https://img.shields.io/badge/React-19-149ECA?logo=react)](https://react.dev/) [![Tests](https://img.shields.io/badge/backend_tests-110_files-22C55E)](./docs/architecture.md) [![Core privado](https://img.shields.io/badge/core-private-111827)](#alcance-público)
+[![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet)](https://dotnet.microsoft.com/) [![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-Web_API-512BD4)](https://learn.microsoft.com/aspnet/core/) [![React 19](https://img.shields.io/badge/React-19-149ECA?logo=react)](https://react.dev/) [![Tests](https://img.shields.io/badge/private_test_files-124-22C55E)](#verified-engineering-evidence)
 
-Diwy reúne conversación con modelos, herramientas externas, artifacts, memoria y flujos de desarrollo asistido en una sola plataforma. Su reto central no es mostrar un chat: es coordinar proveedores y capacidades distintas sin duplicar lógica entre web, escritorio y terminal.
+Diwy coordinates AI providers, external tools, visual artifacts, memory, and software-development workflows behind one reusable .NET core. Web, desktop, and terminal clients present the experience without reimplementing agent behavior.
 
-> Este repositorio contiene documentación, arquitectura, contratos y una muestra pública. El código principal permanece privado porque el producto continúa en desarrollo y operación.
+> The production source remains private. This repository publishes architecture, trade-offs, sanitized contracts, and independently written samples that demonstrate the engineering approach without exposing proprietary logic or secrets.
 
-## El problema
+## The problem
 
-Las interfaces de IA suelen acoplar la experiencia a un proveedor y ejecutar herramientas sin una frontera clara de permisos. Diwy concentra esas decisiones en un núcleo .NET reutilizable y mantiene los clientes como capas de presentación finas.
+AI applications often couple their UI to one provider and treat a model-generated tool call as permission to execute. Diwy separates provider transport, application orchestration, authorization, and execution so that every client follows the same safety rules.
 
-## Mi responsabilidad
+## My role
 
-Diseño y desarrollo full-stack: arquitectura del núcleo, API ASP.NET Core, EF Core, autenticación JWT, integración de proveedores, herramientas, experiencia React y estrategia de pruebas.
+I designed and implemented the product across backend and frontend boundaries: .NET architecture, ASP.NET Core APIs, EF Core persistence, JWT authentication, provider adapters, tool authorization, workspace isolation, React state/data flows, and automated tests.
 
-## Capacidades demostradas
+## Engineering highlights
 
-- Clean Architecture con dependencias hacia dominio y aplicación.
-- ASP.NET Core Identity, JWT y refresh tokens.
-- Contratos neutrales para varios proveedores de IA.
-- Streaming HTTP/SSE y protocolo NDJSON para CLI.
-- Motor de permisos `allow / deny / ask` y workspaces aislados.
-- Cifrado de credenciales, PostgreSQL/SQLite e i18n en cinco idiomas.
-- 110 archivos de pruebas backend y 14 suites frontend identificadas en el repositorio privado.
+- Clean Architecture with dependency direction enforced by project references.
+- ASP.NET Core Identity, access JWTs, refresh-token sessions, and role policies.
+- Provider-neutral contracts for messages, streaming, tools, and generation options.
+- HTTP/SSE for web and desktop; NDJSON over stdio for the terminal client.
+- `allow / ask / deny` authorization before tool execution.
+- PostgreSQL for hosted scenarios and SQLite migrations for local clients.
+- Encrypted provider credentials and publish rules that exclude local secrets.
+- React 19, TanStack Query, Zustand, Zod, sandboxed artifacts, and five-language i18n.
 
-## Arquitectura
+## Architecture
 
 ```mermaid
 flowchart LR
-  Web["Web · React"] --> HTTP["HTTP + SSE"]
-  Desktop["Desktop · Tauri"] --> HTTP
-  CLI["CLI · Ink"] --> Proto["NDJSON"]
-  HTTP --> Core["Núcleo .NET"]
-  Proto --> Core
+  Web["React web"] --> SSE["HTTP + SSE"]
+  Desktop["Tauri desktop"] --> SSE
+  CLI["Ink terminal"] --> NDJSON["NDJSON protocol"]
+  SSE --> Core[".NET core"]
+  NDJSON --> Core
   Core --> App["Domain + Application"]
-  Core --> Infra["EF Core · tools · runners"]
+  Core --> Infra["EF Core · providers · tools · runners"]
+  Infra --> Data["PostgreSQL / SQLite"]
 ```
 
-Consulta [arquitectura](./docs/architecture.md), [decisiones](./docs/decisions.md) y [roadmap](./docs/roadmap.md).
+See [architecture](./docs/architecture.md), [technical decisions](./docs/decisions.md), and the [engineering evidence map](./docs/engineering-evidence.md).
 
-## Muestra pública
+## Public code samples
 
-`ToolAuthorizationPolicy` modela una frontera independiente para autorizar herramientas según riesgo, autenticación y consentimiento explícito.
+| Sample | What it demonstrates |
+| --- | --- |
+| `ToolAuthorizationPolicy` | Fail-closed authorization, explicit consent, risk classification |
+| `ToolExecutionAudit` | Immutable audit records and outcome classification |
+| Tests | Boundary cases, case-insensitive deny rules, and deterministic behavior |
 
 ```bash
 dotnet test tests/Diwy.PublicSample.Tests.csproj
 ```
 
-Revisa el [código](./sample-code/ToolAuthorizationPolicy.cs), sus [pruebas](./tests/ToolAuthorizationPolicyTests.cs) y el [contrato público](./api/openapi.yaml).
+Start with [ToolAuthorizationPolicy.cs](./sample-code/ToolAuthorizationPolicy.cs) and its [tests](./tests/ToolAuthorizationPolicyTests.cs).
+
+## Verified engineering evidence
+
+- 110 backend test files and 14 frontend test files in the private working repository.
+- Tests cover authorization, command safety, workspaces, agents, provider streaming, encryption, storage, integrations, and CLI behavior.
+- Publish configuration explicitly prevents local settings and workspace data from entering artifacts.
+- API/provider contracts are isolated from client-specific presentation.
+
+## Challenges addressed
+
+1. Keeping one behavioral core across three different clients.
+2. Mapping incompatible provider streaming/tool formats into stable internal contracts.
+3. Preventing model output from bypassing human authorization.
+4. Making file mutations reviewable and reversible.
+5. Supporting hosted and local persistence without leaking platform concerns into the domain.
+
+## Public vs. private
+
+| Public here | Kept private |
+| --- | --- |
+| Architecture and ADR-style decisions | Production source and prompts |
+| Reduced OpenAPI contract | Administrative endpoints and full schemas |
+| Independent C# samples and tests | Credentials, customer data, telemetry |
+| Security boundaries | Provider-specific operational configuration |
 
 ## Demo
 
-No hay una demo pública todavía: el modo demostración debe aislar herramientas, workspaces y proveedores antes de abrirse sin invitación.
+A public demo is intentionally deferred until tool execution, workspaces, and providers can run in a fully isolated guest environment.
 
-## Evidencia visual
+## Roadmap
 
-Las capturas se publicarán después de anonimizar conversaciones, rutas y cuentas. La guía está en [screenshots/README.md](./screenshots/README.md).
+See the [public roadmap](./docs/roadmap.md). It describes engineering direction, not private delivery dates.
 
-## Alcance público
+## License
 
-| Público aquí | Permanece privado |
-| --- | --- |
-| Arquitectura y decisiones | Código principal y configuración |
-| OpenAPI reducido | Endpoints administrativos y esquemas completos |
-| Muestra C# y pruebas | Prompts, integraciones y datos reales |
-
-## Seguridad y licencia
-
-Consulta [SECURITY.md](./SECURITY.md). La [licencia MIT](./LICENSE) cubre solo esta muestra, no el producto privado.
+The samples in this repository are MIT licensed. The private product is not covered by this license.

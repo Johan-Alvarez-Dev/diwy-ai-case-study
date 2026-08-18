@@ -1,12 +1,12 @@
 openapi: 3.1.0
 info:
-  title: Diwy Public Contract
+  title: Diwy Public API Contract
   version: 1.0.0
-  description: Contrato ilustrativo; no representa la API productiva completa.
+  description: A reduced illustrative contract; it is not the complete production API.
 paths:
   /api/public/capabilities:
     get:
-      summary: Lista capacidades públicas
+      summary: Return client-safe capabilities
       responses:
         '200':
-          description: Capacidades disponibles
+          description: Available public capabilities

@@ -1,9 +1,9 @@
-# Roadmap público
+# Public Roadmap
 
-- Consolidar contratos entre web, desktop y CLI.
-- Ampliar pruebas de permisos y aislamiento.
-- Mejorar recuperación ante providers y streams interrumpidos.
-- Profundizar observabilidad sin registrar contenido sensible.
-- Publicar una demo segura cuando el aislamiento esté validado.
+- Stabilize contracts shared by web, desktop, and CLI.
+- Extend permission and workspace-isolation test matrices.
+- Improve recovery from interrupted provider streams.
+- Expand content-safe observability.
+- Publish an isolated guest demo after its execution boundary is validated.
 
-El backlog operativo y las fechas permanecen privados.
+Private milestones and operational details are intentionally excluded.

@@ -1,30 +1,33 @@
-# Arquitectura pública
+# Public Architecture
 
-## Principio rector
+## Core rule
 
-La lógica de negocio y del agente vive en un único núcleo .NET. Web, desktop y CLI presentan estado y transportan comandos; no reimplementan permisos ni herramientas.
+All agent and business behavior lives in the .NET core. Clients transport commands and render state; they do not reimplement authorization, tool routing, or provider behavior.
 
-| Capa | Responsabilidad | No conoce |
+## Dependency boundaries
+
+| Layer | Owns | Must not depend on |
 | --- | --- | --- |
-| Domain | Entidades e invariantes | HTTP, EF Core, providers |
-| Application | Casos de uso y contratos | Persistencia concreta |
-| Infrastructure | EF Core, cifrado, providers y runners | UI |
-| Hosts | Transporte, auth y composición | Reglas duplicadas |
-| Clientes | Interacción y representación | Secretos |
+| Domain | Entities, state transitions, invariants | ASP.NET Core, EF Core, providers |
+| Application | Use cases, contracts, validation, orchestration | Concrete persistence or UI |
+| Infrastructure | EF Core, encryption, provider adapters, filesystems, runners | Client presentation |
+| API / CLI hosts | Authentication, transport, dependency composition | Duplicated business rules |
+| Clients | Interaction, rendering, local UI state | Secrets or execution policy |
 
-## Flujo sensible
+## Tool execution sequence
 
-1. El cliente autentica con JWT y refresh token.
-2. Application construye una solicitud neutral al proveedor.
-3. Toda herramienta propuesta atraviesa el motor de permisos.
-4. Las mutaciones producen evidencia revisable y checkpoints.
-5. Infrastructure persiste sin exponer credenciales.
+1. Authenticate the caller and resolve the active user/session.
+2. Build a provider-neutral generation request.
+3. Parse a proposed tool call into an internal contract.
+4. Validate its schema and classify its risk.
+5. Resolve `allow`, `ask`, or `deny` before execution.
+6. Execute inside the appropriate workspace boundary.
+7. Persist an audit-safe result and stream progress to the client.
 
-## Atributos de calidad
+## Quality attributes
 
-- Seguridad por defecto y denegaciones explícitas.
-- Portabilidad entre PostgreSQL y SQLite.
-- Proveedores reemplazables detrás de contratos propios.
-- Lógica pura testeable y cancelación de extremo a extremo.
-
-Se omiten topología, secretos y controles operativos internos.
+- **Security:** explicit denial rules, human confirmation, encrypted secrets.
+- **Portability:** provider adapters and dual PostgreSQL/SQLite persistence.
+- **Recoverability:** cancellation, checkpoints, reviewable diffs.
+- **Testability:** pure policies separated from transport and I/O.
+- **Observability:** structured outcomes without logging secret content.

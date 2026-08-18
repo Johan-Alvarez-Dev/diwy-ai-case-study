@@ -1,5 +1,5 @@
-# Evidencia visual
+# Screenshot Plan
 
-Usa datos sintéticos; oculta rutas, claves y repositorios; elimina metadatos; añade texto alternativo.
+Planned evidence: model/provider selection, tool confirmation, diff review, desktop client, and terminal client.
 
-Capturas sugeridas: selector de modelos, confirmación de tools, revisión de diff y clientes desktop/CLI.
+Every capture must use synthetic content, remove local paths and account details, strip metadata, and include meaningful alt text.

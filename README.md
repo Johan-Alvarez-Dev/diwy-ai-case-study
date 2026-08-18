@@ -3,10 +3,15 @@
 ### A public engineering case study for a private, production-oriented .NET product
 
 [![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet)](https://dotnet.microsoft.com/) [![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-Web_API-512BD4)](https://learn.microsoft.com/aspnet/core/) [![React 19](https://img.shields.io/badge/React-19-149ECA?logo=react)](https://react.dev/) [![Tests](https://img.shields.io/badge/private_test_files-124-22C55E)](#verified-engineering-evidence)
+[![Public sample CI](https://github.com/Johan-Alvarez-Dev/diwy-ai-case-study/actions/workflows/ci.yml/badge.svg)](https://github.com/Johan-Alvarez-Dev/diwy-ai-case-study/actions/workflows/ci.yml)
 
 Diwy coordinates AI providers, external tools, visual artifacts, memory, and software-development workflows behind one reusable .NET core. Web, desktop, and terminal clients present the experience without reimplementing agent behavior.
 
 > The production source remains private. This repository publishes architecture, trade-offs, sanitized contracts, and independently written samples that demonstrate the engineering approach without exposing proprietary logic or secrets.
+
+[Open the live demo](https://diwy-ia.vercel.app/) · [Review the architecture](./docs/architecture.md) · [Inspect the samples](./sample-code) · [Read the API contract](./api/openapi.yaml)
+
+![Diwy agent workspace with chat, projects, tools, and model controls](./screenshots/live-demo.png)
 
 ## The problem
 
@@ -83,7 +88,7 @@ Start with [ToolAuthorizationPolicy.cs](./sample-code/ToolAuthorizationPolicy.cs
 
 ## Demo
 
-A public demo is intentionally deferred until tool execution, workspaces, and providers can run in a fully isolated guest environment.
+[Open the Diwy demo](https://diwy-ia.vercel.app/). The deployed product demonstrates the user experience; this repository is the safe technical companion for architecture, security boundaries, and reviewable code.
 
 ## Roadmap
 

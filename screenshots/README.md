@@ -1,5 +1,5 @@
-# Product captures
+# Product gallery assets
 
-`live-demo.png` is a sanitized capture of the public guest workspace. It shows the agent-oriented chat surface, projects, tool entry points, model controls, and sign-in boundary without exposing an account.
+This directory contains responsive 900 px and 1600 px WebP captures for the agent workspace, provider configuration, and registration boundary. Light and dark variants are selected automatically by the [product tour](../docs/product-tour.md).
 
-Future captures must use synthetic content, remove local paths and account details, strip metadata, and include meaningful alt text.
+All captures use synthetic content. Future assets must remove local paths, account details, provider credentials, and workspace identifiers before publication.

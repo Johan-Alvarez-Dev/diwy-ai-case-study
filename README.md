@@ -9,9 +9,13 @@ Diwy coordinates AI providers, external tools, visual artifacts, memory, and sof
 
 > The production source remains private. This repository publishes architecture, trade-offs, sanitized contracts, and independently written samples that demonstrate the engineering approach without exposing proprietary logic or secrets.
 
-[Open the live demo](https://diwy-ia.vercel.app/) · [Review the architecture](./docs/architecture.md) · [Inspect the samples](./sample-code) · [Read the API contract](./api/openapi.yaml)
+[Open the live demo](https://diwy-ia.vercel.app/) · [Product tour](./docs/product-tour.md) · [Architecture](./docs/architecture.md) · [Code samples](./sample-code) · [Video](#video-walkthrough)
 
-![Diwy agent workspace with chat, projects, tools, and model controls](./screenshots/live-demo.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./screenshots/diwy-home-dark-900.webp 900w, ./screenshots/diwy-home-dark-1600.webp 1600w">
+  <source media="(prefers-color-scheme: light)" srcset="./screenshots/diwy-home-light-900.webp 900w, ./screenshots/diwy-home-light-1600.webp 1600w">
+  <img src="./screenshots/diwy-home-light-1600.webp" alt="Diwy agent workspace with chat navigation, projects, and model controls" width="1600">
+</picture>
 
 ## The problem
 
@@ -89,6 +93,14 @@ Start with [ToolAuthorizationPolicy.cs](./sample-code/ToolAuthorizationPolicy.cs
 ## Demo
 
 [Open the Diwy demo](https://diwy-ia.vercel.app/). The deployed product demonstrates the user experience; this repository is the safe technical companion for architecture, security boundaries, and reviewable code.
+
+Explore the theme-aware [product tour](./docs/product-tour.md) for the agent workspace, provider configuration, and account boundary.
+
+## Video walkthrough
+
+> **Coming soon.** A concise narrated tour of the agent workspace, provider selection, and tool-authorization flow is being recorded.
+
+The repository reserves the [media area](./media/README.md) for the final video or optimized GIF.
 
 ## Roadmap
 

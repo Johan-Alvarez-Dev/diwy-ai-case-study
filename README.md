@@ -98,9 +98,15 @@ Explore the theme-aware [product tour](./docs/product-tour.md) for the agent wor
 
 ## Video walkthrough
 
-> **Coming soon.** A concise narrated tour of the agent workspace, provider selection, and tool-authorization flow is being recorded.
+The 7-second preview moves from the agent workspace into model and provider controls. Authentication is excluded so no account details or credentials are exposed.
 
-The repository reserves the [media area](./media/README.md) for the final video or optimized GIF.
+<p align="center">
+  <a href="./media/diwy-walkthrough.gif">
+    <img src="./media/diwy-walkthrough.gif" alt="Diwy agent workspace and AI provider controls walkthrough" width="640">
+  </a>
+</p>
+
+Open the animation at full size or review the [annotated product tour](./docs/product-tour.md).
 
 ## Roadmap
 

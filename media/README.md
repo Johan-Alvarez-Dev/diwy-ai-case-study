@@ -1,11 +1,11 @@
-# Diwy video walkthrough
+# Diwy walkthrough assets
 
-This directory is reserved for the public product walkthrough currently in production.
+## Published
 
-Recommended deliverables:
+- [`diwy-walkthrough.gif`](./diwy-walkthrough.gif) — optimized silent preview used by the main README and product tour.
 
-- `diwy-walkthrough.mp4` — 60–120 second narrated product tour.
-- `diwy-walkthrough.gif` — short silent preview optimized for the main README.
-- `diwy-walkthrough-cover.webp` — accessible poster image linked to the full video.
+The preview starts after authentication and contains synthetic workspace content. Account details, provider credentials, private prompts, local paths, and workspace identifiers are excluded.
 
-Use synthetic content only. Remove account details, provider credentials, private prompts, local paths, and workspace identifiers before publishing.
+## Optional next asset
+
+A future `diwy-walkthrough.mp4` can provide a 60–120 second narrated tour. Keep the GIF as the fast recruiter preview and link the longer video rather than embedding it directly.

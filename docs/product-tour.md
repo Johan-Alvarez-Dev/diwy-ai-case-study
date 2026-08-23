@@ -2,6 +2,16 @@
 
 These captures use synthetic guest content and switch automatically between light and dark screenshots when both themes are available. Open the [live demo](https://diwy-ia.vercel.app/) to explore the current interface.
 
+## Quick walkthrough
+
+The silent preview shows the agent workspace and provider controls without exposing authentication details.
+
+<p align="center">
+  <a href="../media/diwy-walkthrough.gif">
+    <img src="../media/diwy-walkthrough.gif" alt="Diwy agent workspace and AI provider controls walkthrough" width="640">
+  </a>
+</p>
+
 ## Agent workspace
 
 The primary workspace keeps conversations, projects, model controls, and agent entry points in one surface.

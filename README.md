@@ -9,7 +9,7 @@ Diwy coordinates AI providers, external tools, visual artifacts, memory, and sof
 
 > The production source remains private. This repository publishes architecture, trade-offs, sanitized contracts, and independently written samples that demonstrate the engineering approach without exposing proprietary logic or secrets.
 
-[Open the live demo](https://diwy-ia.vercel.app/) · [Product tour](./docs/product-tour.md) · [Architecture](./docs/architecture.md) · [Code samples](./sample-code) · [Video](#video-walkthrough)
+[Open the live demo](https://diwy.online/demo) · [Product documentation](https://docs.diwy.online/) · [Product tour](./docs/product-tour.md) · [Architecture](./docs/architecture.md) · [Code samples](./sample-code) · [Video](#video-walkthrough)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./screenshots/diwy-home-dark-900.webp 900w, ./screenshots/diwy-home-dark-1600.webp 1600w">
@@ -92,7 +92,7 @@ Start with [ToolAuthorizationPolicy.cs](./sample-code/ToolAuthorizationPolicy.cs
 
 ## Demo
 
-[Open the Diwy demo](https://diwy-ia.vercel.app/). The deployed product demonstrates the user experience; this repository is the safe technical companion for architecture, security boundaries, and reviewable code.
+[Open the Diwy demo](https://diwy.online/demo) or read the [product documentation](https://docs.diwy.online/). The deployed product demonstrates the user experience; this repository is the safe technical companion for architecture, security boundaries, and reviewable code.
 
 Explore the theme-aware [product tour](./docs/product-tour.md) for the agent workspace, provider configuration, and account boundary.
 

@@ -1,6 +1,6 @@
 # Diwy product tour
 
-These captures use synthetic guest content and switch automatically between light and dark screenshots when both themes are available. Open the [live demo](https://diwy-ia.vercel.app/) to explore the current interface.
+These captures use synthetic guest content and switch automatically between light and dark screenshots when both themes are available. Open the [live demo](https://diwy.online/demo) to explore the current interface or consult the [product documentation](https://docs.diwy.online/) for guided usage.
 
 ## Quick walkthrough
 
